@@ -93,7 +93,7 @@ MachO::MachO(std::ifstream &f, off_t offset, size_t size) : header{}, offset{off
                 loadCommands.push_back(lc);
         }
 
-        size_t actualRead = f.tellg() - start;
+        size_t actualRead = static_cast<size_t>(f.tellg()) - static_cast<size_t>(start);
 
         // Laziness: allow partial reads by skpping ahead
         // TODO: demand complete parses and make this explode instead
